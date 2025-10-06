@@ -10,3 +10,37 @@
  */
 
 #include "pid_controller.hpp"
+
+PIDController::PIDController(double kp, double ki, double kd)
+{
+  // TODO: Implement constructor
+}
+
+double PIDController::compute(double setpoint, double measured_value, double dt)
+{
+  // TODO: Implement PID control logic
+    return 0.0;
+}
+
+double PIDController::getKp() const
+{
+    // TODO: Implement getKp
+    return 0.0;
+}
+
+double PIDController::getKi() const
+{
+    // TODO: Implement getKi
+    return 0.0;
+}
+
+double PIDController::getKd() const
+{
+    // TODO: Implement getKd
+    return 0.0;
+}
+
+void PIDController::reset()
+{
+  // TODO: Implement reset logic
+}
