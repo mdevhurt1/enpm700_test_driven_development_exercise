@@ -8,3 +8,6 @@
 ## Part 1
 
 - Marcus Hurt (`mdevhurt1`) - Driver, Navigator
+
+# UML Diagram
+![PID Controller Class Diagram](libs/pid_controller/pid_controller_UML_diagram.png)
