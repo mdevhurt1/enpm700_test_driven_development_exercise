@@ -37,6 +37,18 @@ double PIDController::getKd() const {
   return 0.0;
 }
 
+void PIDController::setKp(double kp) {
+  // TODO: Implement setKp
+}
+
+void PIDController::setKi(double ki) {
+  // TODO: Implement setKi
+}
+
+void PIDController::setKd(double kd) {
+  // TODO: Implement setKd
+}
+
 void PIDController::reset() {
   // TODO: Implement reset logic
 }

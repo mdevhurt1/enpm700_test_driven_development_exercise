@@ -37,6 +37,10 @@ class PIDController {
   double getKi() const;
   double getKd() const;
 
+  void setKp(double kp);
+  void setKi(double ki);
+  void setKd(double kd);
+
   /**
    * @brief Reset the PID controller state (integral and previous error)
    *
