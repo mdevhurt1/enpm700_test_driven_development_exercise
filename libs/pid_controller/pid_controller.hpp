@@ -4,49 +4,49 @@
  * @brief PID controller class definition
  * @version 0.1
  * @date 2025-10-06
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
+ * This class contains the declaration of a simple PID controller class.
  */
 
- #pragma once
-
+#pragma once
 
 class PIDController {
-public:
-    /**
-     * @brief Construct a new PIDController object
-     * 
-     * @param kp 
-     * @param ki 
-     * @param kd 
-     */
-    PIDController(double kp, double ki, double kd);
+ public:
+  /**
+   * @brief Construct a new PIDController object
+   *
+   * @param kp - proportional gain
+   * @param ki - integral gain
+   * @param kd - derivative gain
+   */
+  PIDController(double kp, double ki, double kd);
 
-    /**
-     * @brief Compute the PID controller output
-     * 
-     * @param setpoint - desired value
-     * @param measured_value - current value
-     * @param dt - timestep
-     * @return double 
-     */
-    double compute(double setpoint, double measured_value, double dt);
+  /**
+   * @brief Compute the PID controller output velocity command
+   *
+   * @param setpoint - desired value
+   * @param measured_value - current value
+   * @param dt - timestep
+   * @return double
+   */
+  double compute(double setpoint, double measured_value, double dt);
 
-    double getKp() const;
-    double getKi() const;
-    double getKd() const;
+  double getKp() const;
+  double getKi() const;
+  double getKd() const;
 
-    /**
-     * @brief Reset the PID controller state (integral and previous error)
-     * 
-     */
-    void reset();
+  /**
+   * @brief Reset the PID controller state (integral and previous error)
+   *
+   */
+  void reset();
 
-private:
-    double kp_;
-    double ki_;
-    double kd_;
-    double integral_;
-    double previous_error_;
+ private:
+  double kp_;
+  double ki_;
+  double kd_;
+  double integral_;
+  double previous_error_;
 };
