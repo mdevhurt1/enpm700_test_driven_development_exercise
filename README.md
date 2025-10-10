@@ -9,6 +9,11 @@
 
 - Marcus Hurt (`mdevhurt1`) - Driver, Navigator
 
+## Part 2
+
+- Venkata Madhav Tadavarthi (`madhav2133`) - Driver
+- Rahul Kumar (`rahulk-99`) - Navigator
+
 # UML Diagram
 ![PID Controller Class Diagram](libs/pid_controller/pid_controller_UML_diagram.png)
 
