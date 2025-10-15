@@ -12,43 +12,46 @@
 
 #include "pid_controller.hpp"
 
-PIDController::PIDController(double kp, double ki, double kd) {
-  // TODO: Implement constructor
-}
+PIDController::PIDController(double kp, double ki, double kd) : kp_(kp), ki_(ki), kd_(kd), previous_error_(0.0), integral_(0.0) {}
 
 double PIDController::compute(double setpoint, double measured_value,
                               double dt) {
-  // TODO: Implement PID control logic
-  return 0.0;
+  double error = setpoint - measured_value;
+  double integral = integral_ + error * dt;
+  double derivative = (error - previous_error_) / dt;
+
+  previous_error_ = error;
+  integral_ = integral;
+
+  return kp_ * error + kd_ * derivative + ki_ * integral;                
+  // return 0.0;
 }
 
 double PIDController::getKp() const {
-  // TODO: Implement getKp
-  return 0.0;
+  return kp_;  
 }
 
 double PIDController::getKi() const {
-  // TODO: Implement getKi
-  return 0.0;
+  return ki_;
 }
 
 double PIDController::getKd() const {
-  // TODO: Implement getKd
-  return 0.0;
+  return kd_;
 }
 
 void PIDController::setKp(double kp) {
-  // TODO: Implement setKp
+  kp_ = kp;
 }
 
 void PIDController::setKi(double ki) {
-  // TODO: Implement setKi
+  ki_ = ki;
 }
 
 void PIDController::setKd(double kd) {
-  // TODO: Implement setKd
+  kd_ = kd;
 }
 
 void PIDController::reset() {
-  // TODO: Implement reset logic
+  previous_error_ = 0.0;
+  integral_ = 0.0;
 }
