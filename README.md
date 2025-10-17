@@ -65,3 +65,26 @@ To run the tests:
 ```bash
 ./build/test/cpp-test
 ```
+
+## Additional test suggestions for `pid_controller_test.cpp`
+
+Below are concrete unit tests we recommend adding to increase coverage and catch common PID bugs. Add these at the end of `test/pid_controller_test.cpp` (or a new test file) as small, focused GoogleTest cases.
+
+- Proportional-only behavior
+	- Set Kp != 0, Ki = Kd = 0. Verify output = Kp * error for a single call to compute(error, dt).
+
+- Integral accumulation and reset
+	- Set Ki != 0, Kp = Kd = 0. Call compute() repeatedly with a constant error and verify the output increases over time (integral grows).
+	- Call reset() and verify subsequent compute() does not include the previous integral (output drops accordingly).
+
+- Derivative term correctness
+	- Set Kd != 0, Kp = Ki = 0. Feed two inputs separated by a known dt and verify the derivative term contribution equals Kd * (error - prev_error) / dt (within a small tolerance).
+
+- Zero and very small dt handling
+	- Ensure compute(..., dt=0) does not divide-by-zero or crash. Expectation: implementation should guard against dt==0 (return 0 derivative or handle safely). Test that the call is safe and deterministic.
+
+- Negative and large gains
+	- Verify behavior with negative gains (output should follow the algebraic sign) and with very large gains (ensure no unexpected overflow/crash).
+
+- Sequence / step response smoke test
+	- Provide a short sequence of inputs (e.g., step from 0 to target) and assert qualitative behavior: the controller should move the output in the correct direction and not produce NaNs or Infs.
